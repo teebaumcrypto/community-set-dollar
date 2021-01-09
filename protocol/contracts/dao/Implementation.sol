@@ -32,7 +32,7 @@ contract Implementation is State, Bonding, Market, Regulator, Govern {
 
     function initialize() initializer public {
         // committer reward:
-        mintToAccount(msg.sender, 100e18); // 100 TSD to committer
+        mintToAccount(msg.sender, 1000e18); // 1000 TSD to committer
         // contributor  rewards:
     }
 
@@ -46,9 +46,18 @@ contract Implementation is State, Bonding, Market, Regulator, Govern {
 
     modifier incentivized {
         // Mint advance reward to sender
-        uint256 incentive = Constants.getAdvanceIncentive();
-        mintToAccount(msg.sender, incentive);
+        if(isContract(msg.sender) == false) {
+            uint256 incentive = Constants.getAdvanceIncentive();
+            mintToAccount(msg.sender, incentive);
+        }
         emit Incentivization(msg.sender, incentive);
         _;
+    }
+    function isContract(address _address) returns (bool isContract){
+       uint32 size;
+       assembly {
+          size := extcodesize(_address)
+       }
+       return (size > 0);
     }
 }
