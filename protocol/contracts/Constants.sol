@@ -42,8 +42,8 @@ library Constants {
     }
 
     uint256 private constant EPOCH_OFFSET = 0;
-    uint256 private constant EPOCH_START = 1609473600;
-    uint256 private constant EPOCH_PERIOD = 3600;
+    uint256 private constant EPOCH_START = 1610233200; 
+    uint256 private constant EPOCH_PERIOD = 3600; // 1 Hour
 
     /* Governance */
     uint256 private constant GOVERNANCE_PERIOD = 36;
@@ -67,7 +67,7 @@ library Constants {
     /* Regulator */
     uint256 private constant SUPPLY_CHANGE_DIVISOR = 10e18; // 10
     uint256 private constant SUPPLY_CHANGE_LIMIT = 4e16; // 4%
-    uint256 private constant ORACLE_POOL_RATIO = 40; // 40%
+    uint256 private constant ORACLE_POOL_RATIO = 50; // 50%
 
     /**
      * Getters
